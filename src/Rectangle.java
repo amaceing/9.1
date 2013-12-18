@@ -3,29 +3,29 @@
 
 
 public class Rectangle implements TwoDShapes{
-    private double _length;
-    private double _width;
+    private int _length;
+    private int _width;
 
-    public Rectangle(double length, double width) {
+    public Rectangle(int length, int width) {
         _length = length;
         _width = width;
     }
 
-    public double getLength() {
+    public int getLength() {
         return _length;
     }
 
-    public double getWidth() {
+    public int getWidth() {
         return _width;
     }
 
     @Override
-    public double calculateArea() {
+    public int calculateArea() {
         return _length * _width;
     }
 
     @Override
-    public double calculatePerimeter() {
+    public int calculatePerimeter() {
         return 2 * (_length + _width);
     }
 

@@ -14,13 +14,21 @@ public class Circle implements TwoDShapes {
     }
 
     @Override
-    public double calculateArea() {
-        return Math.PI * Math.pow(_radius, 2);
+    public int calculateArea() {
+        int area = 0;
+        double calcArea= 0.0;
+        calcArea = (Math.PI * Math.pow(_radius, 2)) + 0.5;
+        area = (int) calcArea;
+        return area;
     }
 
     @Override
-    public double calculatePerimeter() {
-        return 2 * Math.PI * _radius;
+    public int calculatePerimeter() {
+        int per = 0;
+        double calcPer = 0.0;
+        calcPer = (2 * Math.PI * _radius) + 0.5;
+        per = (int) calcPer;
+        return per;
     }
 
     @Override

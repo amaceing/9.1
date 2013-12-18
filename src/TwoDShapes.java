@@ -3,8 +3,8 @@
  */
 public interface TwoDShapes {
 
-    double calculateArea();
+    int calculateArea();
 
-    double calculatePerimeter();
+    int calculatePerimeter();
 
 }
