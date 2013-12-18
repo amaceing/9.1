@@ -8,41 +8,60 @@ import java.awt.*;
 public class Project1 {
 
     public static final Scanner console = new Scanner(System.in);
+    public static final int Y_DIMENSION = 950;
+    public static final int X_DIMENSION = 950;
 
     public static void main(String[] args) {
         drawRectangle();
+        drawOval();
     }
 
     public static void drawRectangle() {
         System.out.println("You chose to draw a rectangle!");
         int length = getUserLength();
         int width = getUserWidth();
-        Rectangle rect = new Rectangle(length, width);
+        Rectangle rect = new Rectangle(width, length);
         int xCoord = getXCoordinate();
         int yCoord = getYCoordinate();
-        int panelXDimension = width + 100;
-        int panelYDimension = length + 100;
-        DrawingPanel panel = new DrawingPanel(panelXDimension, panelYDimension);
-        Graphics plane = panel.getGraphics();
-        plane.setColor(Color.pink);
-        plane.drawLine(10, 0, 10, panelYDimension);
-        plane.drawLine(0, 10, panelXDimension, 10);
-        plane.fillRect(xCoord, yCoord, rect.getWidth(), rect.getLength());
+        rect.drawSelf(xCoord, yCoord);
+        System.out.println();
+    }
+
+    public static void drawOval() {
+        System.out.println("You chose to draw a circle!");
+        int length = getUserLength();
+        int width = getUserWidth();
+        Oval oval = new Oval(width, length);
+        int xCoord = getXCoordinate();
+        int yCoord = getYCoordinate();
+        oval.drawSelf(xCoord, yCoord);
         System.out.println();
     }
 
     public static int getUserLength() {
         int length = 0;
-        System.out.print("Enter the length of the rectangle (in.): ");
-        length = console.nextInt();
+        do {
+            System.out.print("Enter the length of the shape (in.): ");
+            length = console.nextInt();
+            if (length >= Y_DIMENSION) {
+                System.out.println("This is too tall!");
+                System.out.println();
+            }
+        } while(length >= Y_DIMENSION);
         System.out.println();
         return length;
     }
 
     public static int getUserWidth() {
         int width = 0;
-        System.out.print("Enter the width of the rectangle (in.): ");
-        width = console.nextInt();
+        do {
+            System.out.print("Enter the width of the shape (in.): ");
+            width = console.nextInt();
+            if (width >= X_DIMENSION) {
+                System.out.println("This is too wide!");
+                System.out.println();
+            }
+        } while(width >= X_DIMENSION);
         System.out.println();
         return width;
     }
@@ -52,10 +71,10 @@ public class Project1 {
         do {
             System.out.print("Enter the x coordinate: ");
             x = console.nextInt();
-            if (x > 950) {
+            if (x >= X_DIMENSION) {
                 System.out.println("That x coordinate is too large for the window!");
             }
-        } while(x > 950);
+        } while(x >= X_DIMENSION);
         System.out.println();
         return x;
     }
@@ -63,12 +82,12 @@ public class Project1 {
     public static int getYCoordinate() {
         int y = 0;
         do {
-            System.out.print("Enter the x coordinate: ");
+            System.out.print("Enter the y coordinate: ");
             y = console.nextInt();
-            if (y > 700) {
+            if (y >= Y_DIMENSION) {
                 System.out.println("That y coordinate is too large for the window!");
             }
-        } while(y > 700);
+        } while(y >= Y_DIMENSION);
         System.out.println();
         return y;
     }

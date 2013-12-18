@@ -1,22 +1,23 @@
 //Anthony Mace  CSC205AB
 //This program ...
 
+import java.awt.*;
 
-public class Rectangle implements TwoDShapes{
+public class Rectangle extends SimpleShape {
     private int _length;
     private int _width;
 
-    public Rectangle(int length, int width) {
-        _length = length;
+    public Rectangle(int width, int length) {
         _width = width;
-    }
-
-    public int getLength() {
-        return _length;
+        _length = length;
     }
 
     public int getWidth() {
         return _width;
+    }
+
+    public int getLength() {
+        return _length;
     }
 
     @Override
@@ -29,8 +30,17 @@ public class Rectangle implements TwoDShapes{
         return 2 * (_length + _width);
     }
 
+    @Override
+    public void drawSelf(int xCoord, int yCoord) {
+        Graphics plane = getPlane();
+        super.setUpPlane();
+        plane.fillRect(xCoord, yCoord, _width, _length);
+
+    }
+
+    @Override
     public String toString() {
-        return "Length: " + _length + "\n" +
-               "WidthL : " + _width;
+        return "Width: " + _width + "\n" +
+               "Length: " + _length;
     }
 }
