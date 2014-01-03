@@ -2,45 +2,20 @@
 //This program ...
 
 import java.awt.*;
+import javax.swing.*;
 
-public class Rectangle extends SimpleShape {
-    private int _length;
+public class Rectangle extends JPanel {
     private int _width;
+    private int _length;
 
     public Rectangle(int width, int length) {
         _width = width;
         _length = length;
     }
 
-    public int getWidth() {
-        return _width;
-    }
-
-    public int getLength() {
-        return _length;
-    }
-
-    @Override
-    public int calculateArea() {
-        return _length * _width;
-    }
-
-    @Override
-    public int calculatePerimeter() {
-        return 2 * (_length + _width);
-    }
-
-    @Override
-    public void drawSelf(int xCoord, int yCoord) {
-        Graphics plane = getPlane();
-        super.setUpPlane();
-        plane.fillRect(xCoord, yCoord, _width, _length);
-
-    }
-
-    @Override
-    public String toString() {
-        return "Width: " + _width + "\n" +
-               "Length: " + _length;
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.lightGray);
+        g.fillRect(75, 75, _width, _length);
     }
 }

@@ -2,8 +2,9 @@
 //This program ...
 
 import java.awt.*;
+import javax.swing.*;
 
-public class Oval extends SimpleShape {
+public class Oval extends JPanel {
     private int _width;
     private int _length;
 
@@ -12,37 +13,11 @@ public class Oval extends SimpleShape {
         _length = length;
     }
 
-    @Override
-    public int calculateArea() {
-        int area = 0;
-        double calcArea = 0.0;
-        calcArea = Math.PI * _width * _length;
-        area = (int) (calcArea + 0.5);
-        return area;
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.lightGray);
+        g.fillOval(75, 75, _width, _length);
     }
 
-    @Override
-    public int calculatePerimeter() {
-        int per = 0;
-        double calcPer = 0.0;
-        calcPer = Math.PI * ((3 *(_width + _length)) -
-                  Math.sqrt((3 * _width + _length) * (_width + 3 * _length)));
-        per = (int) (calcPer + 0.5);
-        return per;
-    }
 
-    @Override
-    public void drawSelf(int xCoord, int yCoord) {
-        Graphics plane = getPlane();
-        plane.setColor(Color.darkGray);
-        plane.drawLine(getOffset(), 0, getOffset(), getYDim());
-        plane.drawLine(0, getOffset(), getXDim(), getOffset());
-        plane.drawOval(xCoord, yCoord, _width, _length);
-    }
-
-    @Override
-    public String toString() {
-        return "Width: " + _width + "\n" +
-               "Length: " + _length;
-    }
 }
