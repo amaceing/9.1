@@ -4,7 +4,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Rectangle extends JPanel {
+public class Rectangle extends JPanel implements TwoDShapes {
     private int _width;
     private int _length;
 
@@ -17,5 +17,13 @@ public class Rectangle extends JPanel {
         super.paintComponent(g);
         g.setColor(Color.lightGray);
         g.fillRect(75, 75, _width, _length);
+    }
+
+    public int calculateArea() {
+        return _width * _length;
+    }
+
+    public int calculatePerimeter() {
+        return 2 * (_width + _length);
     }
 }

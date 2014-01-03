@@ -8,6 +8,4 @@ public interface TwoDShapes {
 
     int calculatePerimeter();
 
-    void drawSelf(int x, int y);
-
 }
